@@ -1,58 +1,19 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <TargetFramework>net48</TargetFramework>
     <OutputType>WinExe</OutputType>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
     <UseWPF>true</UseWPF>
-    <!-- Assembly metadata. -->
-    <Copyright>Copyright (c) Dave Kerr 2020</Copyright>
-    <PackageProjectUrl>https://github.com/dwmkerr/sharpshell</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/dwmkerr/sharpshell</RepositoryUrl>
-    <Version>3.0.0.0-alpha1</Version>
-    <Authors>Dave Kerr</Authors>
-    <Company>Dave Kerr</Company>
-    <Description>The ServerManager tool can be used to manage SharpShell servers.</Description>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Apex">
-      <HintPath>..\..\Dependencies\Apex\Apex.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="ShellExtensions\ExtensionView.xaml.cs">
-      <DependentUpon>ExtensionView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="ShellExtensions\ShellExtensionsView.xaml.cs">
-      <DependentUpon>ShellExtensionsView.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Update="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SharpShell\SharpShell.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Apex" Version="1.5.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>

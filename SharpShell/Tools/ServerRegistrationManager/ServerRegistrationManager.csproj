@@ -1,47 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
     <OutputType>Exe</OutputType>
-    <!-- Assembly metadata. -->
-    <Copyright>Copyright (c) Dave Kerr 2020</Copyright>
-    <PackageProjectUrl>https://github.com/dwmkerr/sharpshell</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/dwmkerr/sharpshell</RepositoryUrl>
-    <Version>3.0.0.0-alpha1</Version>
-    <Authors>Dave Kerr</Authors>
-    <Company>Dave Kerr</Company>
-    <Description>The ServerRegistrationManager tool can be used to install, register and uninstall SharpShell servers.</Description>
-  </PropertyGroup>
-  <PropertyGroup>
     <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
     <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+    <Description>Server Registration Manager for SharpShell, can be used in install or uninstall servers</Description>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-  </PropertyGroup>
-  <ItemGroup>
-    <None Update="app.manifest">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\SharpShell\SharpShell.csproj" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Actions\Help.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="EmbeddedReferences\SharpShell.dll" />
+    <EmbeddedResource Include="..\..\SharpShell\bin\$(Configuration)\$(TargetFramework)\SharpShell.dll" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
-  <PropertyGroup>
-    <PreBuildEvent>xcopy "$(SolutionDir)artifacts\build\SharpShell\SharpShell.dll" "$(ProjectDir)EmbeddedReferences\" /F /R /Y /I</PreBuildEvent>
-  </PropertyGroup>
 </Project>
